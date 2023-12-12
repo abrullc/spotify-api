@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    build: .
+    image: buig/sf-php8.0-apache
     container_name: spotifyapi
     volumes:
       - .:/code
