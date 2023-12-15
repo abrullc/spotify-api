@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Paypal
@@ -16,6 +17,7 @@ class Paypal
      * @var string
      *
      * @ORM\Column(name="username_paypal", type="string", length=150, nullable=false)
+     * @Groups("Paypal")
      */
     private $usernamePaypal;
 
@@ -28,6 +30,7 @@ class Paypal
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="forma_pago_id", referencedColumnName="id")
      * })
+     * @Groups("Paypal")
      */
     private $formaPago;
 

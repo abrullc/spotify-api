@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * Artista
@@ -25,6 +27,7 @@ class Artista
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=false)
+     * @Groups("Artista")
      */
     private $nombre;
 
@@ -32,6 +35,7 @@ class Artista
      * @var string|null
      *
      * @ORM\Column(name="imagen", type="string", length=255, nullable=true)
+     * @Groups("Artista")
      */
     private $imagen;
 
@@ -39,6 +43,7 @@ class Artista
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="artista")
+     * @Groups("Artista")
      */
     private $usuario = array();
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Suscripcion
@@ -25,6 +26,7 @@ class Suscripcion
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_inicio", type="date", nullable=false)
+     * @Groups("Suscripcion")
      */
     private $fechaInicio;
 
@@ -32,6 +34,7 @@ class Suscripcion
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_fin", type="date", nullable=false)
+     * @Groups("Suscripcion")
      */
     private $fechaFin;
 
@@ -42,6 +45,7 @@ class Suscripcion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="premium_usuario_id", referencedColumnName="usuario_id")
      * })
+     * @Groups("Suscripcion")
      */
     private $premiumUsuario;
 

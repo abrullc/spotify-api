@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Podcast
@@ -25,6 +26,7 @@ class Podcast
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=100, nullable=false)
+     * @Groups("Podcast")
      */
     private $titulo;
 
@@ -32,6 +34,7 @@ class Podcast
      * @var string|null
      *
      * @ORM\Column(name="imagen", type="string", length=255, nullable=true)
+     * @Groups("Podcast")
      */
     private $imagen;
 
@@ -39,6 +42,7 @@ class Podcast
      * @var string|null
      *
      * @ORM\Column(name="descripcion", type="text", length=65535, nullable=true)
+     * @Groups("Podcast")
      */
     private $descripcion;
 
@@ -46,6 +50,7 @@ class Podcast
      * @var \DateTime|null
      *
      * @ORM\Column(name="anyo", type="datetime", nullable=true)
+     * @Groups("Podcast")
      */
     private $anyo;
 
@@ -53,6 +58,7 @@ class Podcast
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="podcast")
+     * @Groups("Podcast")
      */
     private $usuario = array();
 
