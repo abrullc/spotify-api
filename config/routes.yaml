@@ -1,3 +1,30 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+usuarios:
+    path: /usuarios
+    controller: App\Controller\UsuarioController::usuarios
+    methods: GET|POST
+
+usuario:
+    path: /usuario/{id}
+    controller: App\Controller\UsuarioController::usuario
+    methods: GET|PUT|DELETE
+
+usuario_sigue_usuarios:
+    path: /usuario/{id}/seguidos
+    controller: App\Controller\UsuarioController::usuariosSeguidos
+    methods: GET
+
+usuario_sigue_usuario:
+    path: /usuario/{usuarioId}/sigue/{usuarioSeguidoId}
+    controller: App\Controller\UsuarioController::usuarioSeguido
+    methods: POST|DELETE
+
+configuraciones:
+    path: /configuraciones
+    controller: App\Controller\ConfiguracionController::configuraciones
+    methods: GET
+
+# INCOMPLETO
