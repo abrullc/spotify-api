@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Cancion
@@ -25,6 +26,7 @@ class Cancion
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=255, nullable=false)
+     * @Groups("Usuario")
      */
     private $titulo;
 
@@ -32,6 +34,7 @@ class Cancion
      * @var int
      *
      * @ORM\Column(name="duracion", type="integer", nullable=false)
+     * @Groups("Usuario")
      */
     private $duracion;
 
@@ -39,6 +42,7 @@ class Cancion
      * @var string|null
      *
      * @ORM\Column(name="ruta", type="string", length=255, nullable=true)
+     * @Groups("Usuario")
      */
     private $ruta;
 
@@ -46,6 +50,7 @@ class Cancion
      * @var int
      *
      * @ORM\Column(name="numero_reproducciones", type="integer", nullable=false)
+     * @Groups("Usuario")
      */
     private $numeroReproducciones;
 
@@ -56,6 +61,7 @@ class Cancion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="album_id", referencedColumnName="id")
      * })
+     * @Groups("Usuario")
      */
     private $album;
 
@@ -63,6 +69,7 @@ class Cancion
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="cancion")
+     * @Groups("Usuario")
      */
     private $usuario = array();
 

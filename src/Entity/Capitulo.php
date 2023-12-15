@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Capitulo
@@ -25,6 +26,7 @@ class Capitulo
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=100, nullable=false)
+     * @Groups("Capitulo")
      */
     private $titulo;
 
@@ -32,6 +34,7 @@ class Capitulo
      * @var string|null
      *
      * @ORM\Column(name="descripcion", type="text", length=65535, nullable=true)
+     * @Groups("Capitulo")
      */
     private $descripcion;
 
@@ -39,6 +42,7 @@ class Capitulo
      * @var int
      *
      * @ORM\Column(name="duracion", type="integer", nullable=false, options={"unsigned"=true})
+     * @Groups("Capitulo")
      */
     private $duracion;
 
@@ -46,6 +50,7 @@ class Capitulo
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="date", nullable=false)
+     * @Groups("Capitulo")
      */
     private $fecha;
 
@@ -53,6 +58,7 @@ class Capitulo
      * @var int
      *
      * @ORM\Column(name="numero_reproducciones", type="integer", nullable=false, options={"unsigned"=true})
+     * @Groups("Capitulo")
      */
     private $numeroReproducciones;
 
@@ -63,6 +69,7 @@ class Capitulo
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="podcast_id", referencedColumnName="id")
      * })
+     * @Groups("Capitulo")
      */
     private $podcast;
 

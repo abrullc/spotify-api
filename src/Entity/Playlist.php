@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Playlist
@@ -25,6 +26,7 @@ class Playlist
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=150, nullable=false)
+     * @Groups("Playlist")
      */
     private $titulo;
 
@@ -32,6 +34,7 @@ class Playlist
      * @var int|null
      *
      * @ORM\Column(name="numero_canciones", type="integer", nullable=true, options={"unsigned"=true})
+     * @Groups("Playlist")
      */
     private $numeroCanciones;
 
@@ -39,6 +42,7 @@ class Playlist
      * @var \DateTime|null
      *
      * @ORM\Column(name="fecha_creacion", type="date", nullable=true)
+     * @Groups("Playlist")
      */
     private $fechaCreacion;
 
@@ -49,6 +53,7 @@ class Playlist
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
+     * @Groups("Playlist")
      */
     private $usuario;
 
@@ -56,6 +61,7 @@ class Playlist
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="playlist")
+     * @Groups("Playlist")
      */
     private $usuarioSeguidor = array();
 

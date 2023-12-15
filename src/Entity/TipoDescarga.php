@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * TipoDescarga
@@ -25,6 +26,7 @@ class TipoDescarga
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=15, nullable=false)
+     * @Groups("TipoDescarga")
      */
     private $nombre;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Letra
@@ -25,6 +26,7 @@ class Letra
      * @var string
      *
      * @ORM\Column(name="ruta", type="string", length=255, nullable=false)
+     * @Groups("Letra")
      */
     private $ruta;
 
@@ -35,6 +37,7 @@ class Letra
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cancion_id", referencedColumnName="id")
      * })
+     * @Groups("Letra")
      */
     private $cancion;
 

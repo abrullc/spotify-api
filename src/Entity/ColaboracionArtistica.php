@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * ColaboracionArtistica
@@ -21,6 +22,7 @@ class ColaboracionArtistica
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="artista_colaborador_id", referencedColumnName="id")
      * })
+     * @Groups("ColaboracionArtistica")
      */
     private $artistaColaborador;
 
@@ -33,6 +35,7 @@ class ColaboracionArtistica
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="artista_id", referencedColumnName="id")
      * })
+     * @Groups("ColaboracionArtistica")
      */
     private $artista;
 
@@ -45,6 +48,7 @@ class ColaboracionArtistica
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cancion_id", referencedColumnName="id")
      * })
+     * @Groups("ColaboracionArtistica")
      */
     private $cancion;
 
