@@ -26,7 +26,7 @@ class Podcast
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=100, nullable=false)
-     * @Groups("Podcast")
+     * @Groups("Podcast","Capitulo")
      */
     private $titulo;
 
