@@ -1,7 +1,11 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+#    methods:
 
+# Ruta configuraciones - GET | baneada
+
+# USUARIOS
 usuarios:
     path: /usuarios
     controller: App\Controller\UsuarioController::usuarios
@@ -12,6 +16,7 @@ usuario:
     controller: App\Controller\UsuarioController::usuario
     methods: GET|PUT|DELETE
 
+# USUARIO SIGUE A USUARIO
 usuario_sigue_usuarios:
     path: /usuario/{id}/seguidos
     controller: App\Controller\UsuarioController::usuariosSeguidos
@@ -22,14 +27,42 @@ usuario_sigue_usuario:
     controller: App\Controller\UsuarioController::usuarioSeguido
     methods: POST|DELETE
 
-configuraciones:
-    path: /configuraciones
-    controller: App\Controller\ConfiguracionController::configuraciones
-    methods: GET
-
+# CONFIGURACIONES
 configuracion:
     path: /usuarios/{usuario_id}/configuracion
     controller: App\Controller\ConfiguracionController::configuracionUsuario
     methods: GET|PUT
 
-# INCOMPLETO
+# PODCASTS
+podcasts:
+    path: /podcasts
+    controller: App\Controller\PodcastController::podcasts
+    methods: GET
+
+podcast:
+    path: /podcast/{id}
+    controller: App\Controller\PodcastController::podcast
+    methods: GET
+
+podcasts_usuario:
+    path: /usuario/{id}/podcasts
+    controller: App\Controller\PodcastController::podcastsUsuario
+    methods: GET
+
+seguir_podcast:
+    path: /usuario/{id}/podcasts
+    controller: App\Controller\PodcastController::seguirPodcast
+    methods: POST|DELETE
+
+# CAPITULOS
+capitulos_podcast:
+    path: /podcast/{id}/capitulos
+    controller: App\Controller\CapituloController::capitulosPodcast
+    methods: GET
+
+info_capitulo_podcast:
+    path: /podcast/{id}/capitulo/{id}
+    controller: App\Controller\CapituloController::infoCapituloPodcast
+    methods: GET
+
+# Se implementarán el resto de rutas por Adrián
