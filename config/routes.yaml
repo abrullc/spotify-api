@@ -5,6 +5,10 @@
 
 # Ruta configuraciones - GET | baneada
 
+##############################################
+# ------>>>> [[[JULIO NO TOCAR]]] <<<<------ #
+##############################################
+
 # USUARIOS
 usuarios:
     path: /usuarios
@@ -29,7 +33,7 @@ usuario_sigue_usuario:
 
 # CONFIGURACIONES
 configuracion:
-    path: /usuarios/{usuario_id}/configuracion
+    path: /usuarios/{id}/configuracion
     controller: App\Controller\ConfiguracionController::configuracionUsuario
     methods: GET|PUT
 
@@ -60,9 +64,56 @@ capitulos_podcast:
     controller: App\Controller\CapituloController::capitulosPodcast
     methods: GET
 
-info_capitulo_podcast:
-    path: /podcast/{id}/capitulo/{id}
-    controller: App\Controller\CapituloController::infoCapituloPodcast
+capitulo_podcast:
+    path: /podcast/{podcastId}/capitulo/{capituloId}
+    controller: App\Controller\CapituloController::capituloPodcast
     methods: GET
 
-# Se implementarán el resto de rutas por Adrián
+# SUSCRIPCIONES
+suscripciones_usuario:
+    path: /usuario/{id}/suscripciones
+    controller: App\Controller\SuscripcionController::suscripcionesUsuario
+    methods: GET
+
+suscripcion_usuario:
+    path: /usuario/{usuarioId}/suscripcion/{suscripcionId}
+    controller: App\Controller\SuscripcionController::suscripcionUsuario
+    methods: GET
+
+# PLAYLISTS
+playlists:
+    path: /playlists
+    controller: App\Controller\PlaylistController::playlists
+    methods: GET|POST
+
+playlist:
+    path: /playlist/{id}
+    controller: App\Controller\PlaylistController::playlist
+    methods: GET
+
+playlists_usuario:
+    path: /usuario/{id}/playlists
+    controller: App\Controller\PlaylistController::playlistsUsuario
+    methods: GET
+
+playlist_usuario:
+    path: /usuario/{usuarioId}/playlist/{playlistId}
+    controller: App\Controller\PlaylistController::playlistUsuario
+    methods: GET|PUT|DELETE
+
+# CANCIONES
+canciones:
+    path: /canciones
+    controller: App\Controller\CancionController::canciones
+    methods: GET
+
+cancion:
+    path: /cancion
+    controller: App\Controller\CancionController::canciones
+    methods: GET
+
+# Todavía faltan algunas
+
+##############################################
+# ------>>>> [[[JULIO NO TOCAR]]] <<<<------ #
+##############################################
