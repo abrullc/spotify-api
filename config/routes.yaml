@@ -20,17 +20,6 @@ usuario:
     controller: App\Controller\UsuarioController::usuario
     methods: GET|PUT|DELETE
 
-# USUARIO SIGUE A USUARIO
-usuario_sigue_usuarios:
-    path: /usuario/{id}/seguidos
-    controller: App\Controller\UsuarioController::usuariosSeguidos
-    methods: GET
-
-usuario_sigue_usuario:
-    path: /usuario/{usuarioId}/sigue/{usuarioSeguidoId}
-    controller: App\Controller\UsuarioController::usuarioSeguido
-    methods: POST|DELETE
-
 # CONFIGURACIONES
 configuracion:
     path: /usuarios/{id}/configuracion
@@ -111,3 +100,15 @@ cancion:
     path: /cancion
     controller: App\Controller\CancionController::canciones
     methods: GET
+
+canciones_playlist:
+    path: /playlist/{id}/canciones
+    controller: App\Controller\CancionController::cancionesPlaylist
+    methods: GET
+
+cancion_playlist:
+    path: /playlist/{playlistId}/cancion/{cancionId}
+    controller: App\Controller\CancionController::cancionesPlaylist
+    methods: POST|DELETE
+
+# 
