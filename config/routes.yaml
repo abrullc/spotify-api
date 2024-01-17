@@ -5,9 +5,7 @@
 
 # Ruta configuraciones - GET | baneada
 
-##############################################
-# ------>>>> [[[JULIO NO TOCAR]]] <<<<------ #
-##############################################
+# Fichero completo
 
 # USUARIOS
 usuarios:
@@ -111,4 +109,52 @@ cancion_playlist:
     controller: App\Controller\CancionController::cancionesPlaylist
     methods: POST|DELETE
 
-# 
+# ARTISTAS
+artistas:
+    path: /artistas
+    controller: App\Controller\ArtistaController::artistas
+    methods: GET
+
+albums_artista:
+    path: /artista/{id}/albums
+    controller: App\Controller\ArtistaController::albumsArtista
+    methods: GET
+
+info_album_artista:
+    path: /artista/{artistaId}/album/{albumId}
+    controller: App\Controller\ArtistaController::infoAlbumArtista
+    methods: GET
+
+# ALBUMS
+albums:
+    path: /albums
+    controller: App\Controller\AlbumController::albums
+    methods: GET
+
+album:
+    path: /album/{id}
+    controller: App\Controller\AlbumController::album
+    methods: GET
+
+canciones_album:
+    path: /album/{id}/canciones
+    controller: App\Controller\AlbumController::cancionesAlbum
+    methods: GET
+
+# CALIDAD
+calidades:
+    path: /calidades
+    controller: App\Controller\CalidadController::calidades
+    methods: GET
+
+# IDIOMA
+idiomas:
+    path: /idiomas
+    controller: App\Controller\IdiomaController::idiomas
+    methods: GET
+
+# TIPO DESCARGA
+tipos_descarga:
+    path: /tipos-descarga
+    controller: App\Controller\TipoDescargaController::tiposDescarga
+    methods: GET
