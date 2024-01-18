@@ -19,7 +19,8 @@ class Pago
      * @ORM\Column(name="numero_orden", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Groups("Pago")
+     * 
+     * @Groups("pago")
      */
     private $numeroOrden;
 
@@ -27,7 +28,8 @@ class Pago
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="date", nullable=false)
-     * @Groups("Pago")
+     * 
+     * @Groups("pago")
      */
     private $fecha;
 
@@ -35,7 +37,8 @@ class Pago
      * @var float
      *
      * @ORM\Column(name="total", type="float", precision=10, scale=0, nullable=false)
-     * @Groups("Pago")
+     * 
+     * @Groups("pago")
      */
     private $total;
 
@@ -46,7 +49,8 @@ class Pago
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="forma_pago_id", referencedColumnName="id")
      * })
-     * @Groups("Pago")
+     * 
+     * @Groups("pago")
      */
     private $formaPago;
 
@@ -57,7 +61,8 @@ class Pago
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="suscripcion_id", referencedColumnName="id")
      * })
-     * @Groups("Pago")
+     * 
+     * @Groups("pago")
      */
     private $suscripcion;
 

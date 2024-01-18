@@ -17,7 +17,8 @@ class Premium
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_renovacion", type="date", nullable=false)
-     * @Groups("Premium")
+     * 
+     * @Groups("premium")
      */
     private $fechaRenovacion;
 
@@ -30,7 +31,8 @@ class Premium
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
-     * @Groups("Premium")
+     * 
+     * @Groups("premium")
      */
     private $usuario;
 
@@ -38,7 +40,8 @@ class Premium
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Cancion", mappedBy="premiumUsuario")
-     * @Groups("Premium")
+     * 
+     * @Groups("premium")
      */
     private $cancion = array();
 

@@ -17,7 +17,8 @@ class TarjetaCredito
      * @var string
      *
      * @ORM\Column(name="numero_tarjeta", type="string", length=20, nullable=false)
-     * @Groups("TarjetaCredito")
+     * 
+     * @Groups("tarjetaCredito")
      */
     private $numeroTarjeta;
 
@@ -25,7 +26,8 @@ class TarjetaCredito
      * @var bool
      *
      * @ORM\Column(name="mes_caducidad", type="boolean", nullable=false)
-     * @Groups("TarjetaCredito")
+     * 
+     * @Groups("tarjetaCredito")
      */
     private $mesCaducidad;
 
@@ -33,7 +35,8 @@ class TarjetaCredito
      * @var \DateTime
      *
      * @ORM\Column(name="anyo_caducidad", type="date", nullable=false)
-     * @Groups("TarjetaCredito")
+     * 
+     * @Groups("tarjetaCredito")
      */
     private $anyoCaducidad;
 
@@ -41,7 +44,8 @@ class TarjetaCredito
      * @var int
      *
      * @ORM\Column(name="codigo_seguridad", type="smallint", nullable=false, options={"unsigned"=true})
-     * @Groups("TarjetaCredito")
+     * 
+     * @Groups("tarjetaCredito")
      */
     private $codigoSeguridad;
 
@@ -54,7 +58,8 @@ class TarjetaCredito
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="forma_pago_id", referencedColumnName="id")
      * })
-     * @Groups("TarjetaCredito")
+     * 
+     * @Groups("tarjetaCredito")
      */
     private $formaPago;
 

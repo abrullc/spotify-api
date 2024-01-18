@@ -17,7 +17,8 @@ class Paypal
      * @var string
      *
      * @ORM\Column(name="username_paypal", type="string", length=150, nullable=false)
-     * @Groups("Paypal")
+     * 
+     * @Groups("paypal")
      */
     private $usernamePaypal;
 
@@ -30,7 +31,8 @@ class Paypal
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="forma_pago_id", referencedColumnName="id")
      * })
-     * @Groups("Paypal")
+     * 
+     * @Groups("paypal")
      */
     private $formaPago;
 

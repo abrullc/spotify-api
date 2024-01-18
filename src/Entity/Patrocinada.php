@@ -17,6 +17,8 @@ class Patrocinada
      * @var bool
      *
      * @ORM\Column(name="patrocinada", type="boolean", nullable=false, options={"default"="1"})
+     * 
+     * @Groups("patrocinada")
      */
     private $patrocinada = true;
 
@@ -24,7 +26,8 @@ class Patrocinada
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_inicio", type="date", nullable=false)
-     * @Groups("Patrocinada")
+     * 
+     * @Groups("patrocinada")
      */
     private $fechaInicio;
 
@@ -32,7 +35,8 @@ class Patrocinada
      * @var \DateTime|null
      *
      * @ORM\Column(name="fecha_fin", type="date", nullable=true)
-     * @Groups("Patrocinada")
+     * 
+     * @Groups("patrocinada")
      */
     private $fechaFin;
 
@@ -45,7 +49,8 @@ class Patrocinada
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="playlist_id", referencedColumnName="id")
      * })
-     * @Groups("Patrocinada")
+     * 
+     * @Groups("patrocinada")
      */
     private $playlist;
 

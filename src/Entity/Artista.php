@@ -20,6 +20,8 @@ class Artista
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * 
+     * @Groups("artista")
      */
     private $id;
 
@@ -27,7 +29,8 @@ class Artista
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=false)
-     * @Groups("Artista")
+     * 
+     * @Groups("artista")
      */
     private $nombre;
 
@@ -35,7 +38,8 @@ class Artista
      * @var string|null
      *
      * @ORM\Column(name="imagen", type="string", length=255, nullable=true)
-     * @Groups("Artista")
+     * 
+     * @Groups("artista")
      */
     private $imagen;
 
@@ -43,7 +47,8 @@ class Artista
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="artista")
-     * @Groups("Artista")
+     * 
+     * @Groups("artista")
      */
     private $usuario = array();
 

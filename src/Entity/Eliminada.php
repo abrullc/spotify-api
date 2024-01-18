@@ -17,7 +17,8 @@ class Eliminada
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_eliminacion", type="date", nullable=false)
-     * @Groups("Eliminada")
+     * 
+     * @Groups("eliminada")
      */
     private $fechaEliminacion;
 
@@ -30,7 +31,8 @@ class Eliminada
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="playlist_id", referencedColumnName="id")
      * })
-     * @Groups("Eliminada")
+     * 
+     * @Groups("eliminada")
      */
     private $playlist;
 

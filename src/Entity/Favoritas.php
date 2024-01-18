@@ -22,7 +22,7 @@ class Favoritas
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="playlist_id", referencedColumnName="id")
      * })
-     * @Groups("Favoritas")
+     * 
      */
     private $playlist;
 

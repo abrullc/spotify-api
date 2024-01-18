@@ -19,6 +19,8 @@ class TipoDescarga
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * 
+     * @Groups("tipoDescarga")
      */
     private $id;
 
@@ -26,7 +28,8 @@ class TipoDescarga
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=15, nullable=false)
-     * @Groups("TipoDescarga")
+     * 
+     * @Groups("tipoDescarga")
      */
     private $nombre;
 

@@ -17,7 +17,8 @@ class Free
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_revision", type="date", nullable=false)
-     * @Groups("Free")
+     * 
+     * @Groups("free")
      */
     private $fechaRevision;
 
@@ -25,7 +26,8 @@ class Free
      * @var int
      *
      * @ORM\Column(name="tiempo_publicidad", type="integer", nullable=false, options={"default"="600"})
-     * @Groups("Free")
+     * 
+     * @Groups("free")
      */
     private $tiempoPublicidad = 600;
 
@@ -38,7 +40,8 @@ class Free
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
-     * @Groups("Free")
+     * 
+     * @Groups("free")
      */
     private $usuario;
 

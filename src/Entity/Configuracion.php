@@ -17,7 +17,8 @@ class Configuracion
      * @var bool
      *
      * @ORM\Column(name="autoplay", type="boolean", nullable=false)
-     * @Groups("Capitulo")
+     * 
+     * @Groups("configuracion")
      */
     private $autoplay;
 
@@ -25,7 +26,8 @@ class Configuracion
      * @var bool
      *
      * @ORM\Column(name="ajuste", type="boolean", nullable=false)
-     * @Groups("Capitulo")
+     * 
+     * @Groups("configuracion")
      */
     private $ajuste;
 
@@ -33,7 +35,8 @@ class Configuracion
      * @var bool
      *
      * @ORM\Column(name="normalizacion", type="boolean", nullable=false)
-     * @Groups("Capitulo")
+     * 
+     * @Groups("configuracion")
      */
     private $normalizacion;
 
@@ -44,7 +47,8 @@ class Configuracion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="calidad_id", referencedColumnName="id")
      * })
-     * @Groups("Capitulo")
+     * 
+     * @Groups("configuracion")
      */
     private $calidad;
 
@@ -55,7 +59,8 @@ class Configuracion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idioma_id", referencedColumnName="id")
      * })
-     * @Groups("Capitulo")
+     * 
+     * @Groups("configuracion")
      */
     private $idioma;
 
@@ -66,7 +71,8 @@ class Configuracion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="tipo_descarga_id", referencedColumnName="id")
      * })
-     * @Groups("Capitulo")
+     * 
+     * @Groups("configuracion")
      */
     private $tipoDescarga;
 
@@ -79,7 +85,8 @@ class Configuracion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
-     * @Groups("Capitulo")
+     * 
+     * @Groups("configuracion")
      */
     private $usuario;
 

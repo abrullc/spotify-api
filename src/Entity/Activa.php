@@ -17,7 +17,8 @@ class Activa
      * @var bool
      *
      * @ORM\Column(name="es_compartida", type="boolean", nullable=false)
-     * @Groups("Activa")
+     * 
+     * @Groups("activa")
      */
     private $esCompartida;
 
@@ -30,7 +31,8 @@ class Activa
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="playlist_id", referencedColumnName="id")
      * })
-     * @Groups("Activa")
+     * 
+     * @Groups("activa")
      */
     private $playlist;
 

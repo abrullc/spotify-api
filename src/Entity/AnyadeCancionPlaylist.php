@@ -17,7 +17,8 @@ class AnyadeCancionPlaylist
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_anyadida", type="datetime", nullable=false)
-     * @Groups("AnyadeCancionPlaylist")
+     * 
+     * @Groups("anyadeCancionPlaylist")
      */
     private $fechaAnyadida;
 
@@ -30,7 +31,8 @@ class AnyadeCancionPlaylist
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="playlist_id", referencedColumnName="id")
      * })
-     * @Groups("AnyadeCancionPlaylist")
+     * 
+     * @Groups("anyadeCancionPlaylist")
      */
     private $playlist;
 
@@ -43,7 +45,8 @@ class AnyadeCancionPlaylist
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cancion_id", referencedColumnName="id")
      * })
-     * @Groups("AnyadeCancionPlaylist")
+     * 
+     * @Groups("anyadeCancionPlaylist")
      */
     private $cancion;
 
@@ -56,7 +59,8 @@ class AnyadeCancionPlaylist
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
-     * @Groups("AnyadeCancionPlaylist")
+     * 
+     * @Groups("anyadeCancionPlaylist")
      */
     private $usuario;
 

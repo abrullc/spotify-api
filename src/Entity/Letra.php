@@ -19,6 +19,8 @@ class Letra
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * 
+     * @Groups("letra")
      */
     private $id;
 
@@ -26,7 +28,8 @@ class Letra
      * @var string
      *
      * @ORM\Column(name="ruta", type="string", length=255, nullable=false)
-     * @Groups("Letra")
+     * 
+     * @Groups("letra")
      */
     private $ruta;
 
@@ -37,7 +40,8 @@ class Letra
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cancion_id", referencedColumnName="id")
      * })
-     * @Groups("Letra")
+     * 
+     * @Groups("letra")
      */
     private $cancion;
 

@@ -22,7 +22,8 @@ class ColaboracionArtistica
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="artista_colaborador_id", referencedColumnName="id")
      * })
-     * @Groups("ColaboracionArtistica")
+     * 
+     * @Groups("colaboracionArtistica")
      */
     private $artistaColaborador;
 
@@ -35,7 +36,8 @@ class ColaboracionArtistica
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="artista_id", referencedColumnName="id")
      * })
-     * @Groups("ColaboracionArtistica")
+     * 
+     * @Groups("colaboracionArtistica")
      */
     private $artista;
 
@@ -48,7 +50,8 @@ class ColaboracionArtistica
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cancion_id", referencedColumnName="id")
      * })
-     * @Groups("ColaboracionArtistica")
+     * 
+     * @Groups("colaboracionArtistica")
      */
     private $cancion;
 
