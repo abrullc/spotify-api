@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Controller;
+# Fichero de Julio
 
 use App\Entity\Capitulo;
+use App\Entity\Podcast;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,26 +21,33 @@ class CapituloController extends AbstractController
         $capitulo = $serializer->serialize(
             $capitulo,
             "json",
-            ["groups" => ["Capitulo"]]
+            ["groups" => ["capitulo"]]
         );
         return new Response($capitulo);
     }
     public function capituloPodcast(Request $request, Request $request2, SerializerInterface $serializer)
-    {        
-        $id = $request->get("id");
-        $id2 = $request->get("id");
-        $capitulos = $this->getDoctrine()
+    {
+        $id = $request->get("podcastId");
+        $id2 = $request->get("capituloId");
+        
+        $podcast = $this->getDoctrine()
+            ->getRepository(Podcast::class)
+            ->findOneBy(["id" => $id]);
+
+        $capitulo = $this->getDoctrine()
             ->getRepository(Capitulo::class)
-            ->findBy(["podcast" => $id]);
-        foreach ($capitulos as $capitulo) {
-            if ($capitulo.getId() == $id2){
-                $respuesta = $serializer->serialize(
-                    $capitulo,
-                    "json",
-                    ["groups" => ["Capitulo"]]
-                );
-            }
+            ->findOneBy(["id" => $id2]);
+
+        if ($podcast->getId() == $capitulo->getPodcast()->getId()) {
+                
+            $respuesta = $serializer->serialize(
+                $capitulo,
+                "json",
+                ["groups" => ["capitulo"]]
+            );
+            return new Response($respuesta);
+        
         }
-        return new Response($respuesta);
+        
     }
 }
