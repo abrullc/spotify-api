@@ -46,7 +46,6 @@ class CapituloController extends AbstractController
                 ["groups" => ["capitulo"]]
             );
             return new Response($respuesta);
-        
         }
         
     }
