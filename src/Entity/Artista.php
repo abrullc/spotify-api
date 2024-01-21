@@ -48,7 +48,6 @@ class Artista
      *
      * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="artista")
      * 
-     * @Groups("artista")
      */
     private $usuario = array();
 

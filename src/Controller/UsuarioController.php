@@ -23,30 +23,30 @@ class UsuarioController extends AbstractController
             $usuarios = $serializer->serialize(
                 $usuarios,
                     "json",
-                    ["groups" => ["usuario"]]
+                    ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
                 );
 
             return new Response($usuarios);
         }
 
-        /*if ($request->isMethod("POST")) {
+        if ($request->isMethod("POST")) {
             $bodyData = $request->getContent();
-            $affiliation = $serializer->deserialize(
+            $usuario = $serializer->deserialize(
                 $bodyData,
                 Usuario::class,
                 "json"
             );
             
-            $this->getDoctrine()->getManager()->persist($affiliation);
+            $this->getDoctrine()->getManager()->persist($usuario);
             $this->getDoctrine()->getManager()->flush();
 
-            $affiliation = $serializer->serialize(
-                $affiliation, 
+            $usuario = $serializer->serialize(
+                $usuario, 
                 "json", 
-                ["groups" => ["affiliation"]]);
+                ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]);
             
-            return new Response($affiliation);
-        }*/
+            return new Response($usuario);
+        }
 
         return new JsonResponse(["msg" => $request->getMethod() . " no permitido"]);
     }
