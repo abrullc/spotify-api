@@ -86,7 +86,6 @@ class Configuracion
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      * 
-     * @Groups("configuracion")
      */
     private $usuario;
 

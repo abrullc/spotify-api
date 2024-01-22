@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 # Fichero de Adrián
+# Fichero completo
 
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -92,7 +93,7 @@ class UsuarioController extends AbstractController
             return new Response($usuario);
             }
 
-            return new JsonResponse(["msg" => "Affiliation no encontrada"], 404);
+            return new JsonResponse(["msg" => "Usuario no encontrado"], 404);
         }
 
         if ($request->isMethod("DELETE")) {
