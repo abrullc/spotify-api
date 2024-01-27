@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 # Fichero de Adrián
+# Fichero completo
 
 use App\Entity\Podcast;
 use App\Entity\Usuario;
@@ -24,7 +25,7 @@ class PodcastController extends AbstractController
             $podcasts = $serializer->serialize(
                     $podcasts,
                     "json",
-                    ["groups" => ["podcast"]]
+                    ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast", "cancion", "album", "artista", "playlist"]]
                 );
 
             return new Response($podcasts);
@@ -105,6 +106,40 @@ class PodcastController extends AbstractController
             $podcast = $this->getDoctrine()
                 ->getRepository(Podcast::class)
                 ->findOneBy(["id" => $idPodcast]);
+
+            if (!empty($usuario))
+            {
+                if (!empty($podcast))
+                {
+                    $usuariosPodcast = $podcast->getUsuario();
+                    
+                    foreach ($usuariosPodcast as $usuarioPodcast)
+                    {
+                        if ($usuarioPodcast == $usuario)
+                        {
+                            return new JsonResponse(["msg" => "El usuario especificado ya esta siguiendo el podcast especificado"]);
+                        }
+                    }
+
+                    $usuariosPodcast[] = $usuario;
+                    $podcast->setUsuario($usuariosPodcast);
+                    
+                    $this->getDoctrine()->getManager()->persist($podcast);
+                    $this->getDoctrine()->getManager()->flush();
+    
+                    $podcast = $serializer->serialize(
+                        $podcast,
+                        "json",
+                        ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast", "cancion", "album", "artista", "playlist"]]
+                    );
+    
+                return new Response($podcast);
+                }
+                
+                return new JsonResponse(["msg" => "Podcast no encontrado"], 404);
+            }
+
+            return new JsonResponse(["msg" => "Usuario no encontrado"], 404);
         }
 
         return new JsonResponse(["msg" => $request->getMethod() . " no permitido"]);
