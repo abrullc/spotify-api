@@ -19,13 +19,13 @@ class ConfiguracionController extends AbstractController
     {
         $id = $request->get("id");
 
-            $usuario = $this->getDoctrine()
-                ->getRepository(Usuario::class)
-                ->findOneBy(["id" => $id]);
+        $usuario = $this->getDoctrine()
+            ->getRepository(Usuario::class)
+            ->findOneBy(["id" => $id]);
 
-            $configuracion = $this->getDoctrine()
-                ->getRepository(Configuracion::class)
-                ->findOneBy(["usuario" => $usuario]);
+        $configuracion = $this->getDoctrine()
+            ->getRepository(Configuracion::class)
+            ->findOneBy(["usuario" => $usuario]);
 
         if ($request->isMethod("GET")) {
 
@@ -62,5 +62,7 @@ class ConfiguracionController extends AbstractController
 
             return new JsonResponse(["msg" => "Configuración no encontrada"], 404);
         }
+
+        return new JsonResponse(["msg" => $request->getMethod() . " no permitido"]);
     }
 }

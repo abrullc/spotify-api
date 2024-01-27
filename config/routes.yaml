@@ -42,7 +42,7 @@ podcasts_usuario:
     methods: GET
 
 seguir_podcast:
-    path: /usuario/{id}/podcasts
+    path: /usuario/{idUsuario}/podcasts/{idPodcast}
     controller: App\Controller\PodcastController::seguirPodcast
     methods: POST|DELETE
 
