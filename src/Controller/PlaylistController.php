@@ -7,6 +7,8 @@ namespace App\Controller;
 use App\Entity\Playlist;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PlaylistController extends AbstractController
 {
@@ -19,10 +21,8 @@ class PlaylistController extends AbstractController
         $playlists = $serializer->serialize(
             $playlists,
                 "json",
-                ["groups" => ["idioma"]]
+                ["groups" => ["plylist"]]
             );
 
         return new Response($playlists);
-    }
-    
-}
+        }}
