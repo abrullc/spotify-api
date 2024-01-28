@@ -20,7 +20,7 @@ class Cancion
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * 
-     * @Groups("cancion")
+     * @Groups("cancion", "cancionAlbum")
      */
     private $id;
 
@@ -38,7 +38,7 @@ class Cancion
      *
      * @ORM\Column(name="duracion", type="integer", nullable=false)
      * 
-     * @Groups("cancion")
+     * @Groups("cancion", "cancionAlbum")
      */
     private $duracion;
 
@@ -47,7 +47,7 @@ class Cancion
      *
      * @ORM\Column(name="ruta", type="string", length=255, nullable=true)
      * 
-     * @Groups("cancion")
+     * @Groups("cancion", "cancionAlbum")
      */
     private $ruta;
 
@@ -56,7 +56,7 @@ class Cancion
      *
      * @ORM\Column(name="numero_reproducciones", type="integer", nullable=false)
      * 
-     * @Groups("cancion")
+     * @Groups("cancion", "cancionAlbum")
      */
     private $numeroReproducciones;
 

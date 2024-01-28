@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 # Fichero de Adrián
-# Fichero completo
 
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,9 +55,9 @@ class UsuarioController extends AbstractController
     {
         $id = $request->get("id");
 
-            $usuario = $this->getDoctrine()
-                ->getRepository(Usuario::class)
-                ->findOneBy(["id" => $id]);
+        $usuario = $this->getDoctrine()
+            ->getRepository(Usuario::class)
+            ->findOneBy(["id" => $id]);
 
         if ($request->isMethod("GET")) {
 
