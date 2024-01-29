@@ -50,8 +50,8 @@ class PlaylistController extends AbstractController
         if ($request->isMethod("GET")) {
 
             $playlists = $this->getDoctrine()
-            ->getRepository(Playlist::class)
-            ->findBy([$usuario->getId() => ["id"]]);
+                ->getRepository(Playlist::class)
+                ->findBy([$usuario->getId() => ["id"]]);
 
             $playlists = $serializer->serialize(
                 $playlists,
@@ -72,10 +72,11 @@ class PlaylistController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $playlist = $serializer->serialize(
-                $playlist, 
-                "json", 
-                ["groups" => ["playlist"]]);
-            
+                $playlist,
+                "json",
+                ["groups" => ["playlist"]]
+            );
+
             return new Response($playlist);
         }
     }
@@ -102,9 +103,27 @@ class PlaylistController extends AbstractController
             }
             return new Response($playlist);
         }
-        if ($request->isMethod("POST")) {
+        if ($request->isMethod("PUT")) {
+            $bodyData = $request->getContent();
+            $playlist = $serializer->deserialize(
+                $bodyData,
+                Playlist::class,
+                "json",
+                ["object_to_populate" => $playlist]
+            );
+            $this->getDoctrine()->getManager()->persist($playlist);
+            $this->getDoctrine()->getManager()->flush();
+
+            $playlist = $serializer->serialize(
+                $playlist,
+                "json",
+                ["groups" => ["playlist"]]
+            );
+
+            return new Response($playlist);
         }
-        if ($request->isMethod("GET")) {
+        if ($request->isMethod("DELETE")) {
+            /* meter la playlist en eliminadas, no borrarla sin mas */
         }
     }
 }
