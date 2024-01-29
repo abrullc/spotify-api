@@ -20,7 +20,7 @@ class Album
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * 
-     * @Groups("album")
+     * @Groups("album", "albumArtista")
      */
     private $id;
 
@@ -29,7 +29,7 @@ class Album
      *
      * @ORM\Column(name="titulo", type="string", length=100, nullable=false)
      * 
-     * @Groups("album")
+     * @Groups("album", "albumArtista")
      */
     private $titulo;
 
@@ -38,7 +38,7 @@ class Album
      *
      * @ORM\Column(name="imagen", type="string", length=255, nullable=false)
      * 
-     * @Groups("album")
+     * @Groups("album", "albumArtista")
      */
     private $imagen;
 
@@ -47,7 +47,7 @@ class Album
      *
      * @ORM\Column(name="patrocinado", type="boolean", nullable=false)
      * 
-     * @Groups("album")
+     * @Groups("album", "albumArtista")
      */
     private $patrocinado;
 
@@ -56,7 +56,7 @@ class Album
      *
      * @ORM\Column(name="fecha_inicio_patrocinio", type="date", nullable=true)
      * 
-     * @Groups("album")
+     * @Groups("album", "albumArtista")
      */
     private $fechaInicioPatrocinio;
 
@@ -65,7 +65,7 @@ class Album
      *
      * @ORM\Column(name="fecha_fin_patrocinio", type="date", nullable=true)
      * 
-     * @Groups("album")
+     * @Groups("album", "albumArtista")
      */
     private $fechaFinPatrocinio;
 
@@ -74,7 +74,7 @@ class Album
      *
      * @ORM\Column(name="anyo", type="datetime", nullable=true)
      * 
-     * @Groups("album")
+     * @Groups("album", "albumArtista")
      */
     private $anyo;
 
