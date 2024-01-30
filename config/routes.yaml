@@ -96,8 +96,8 @@ canciones:
     methods: GET
 
 cancion:
-    path: /cancion
-    controller: App\Controller\CancionController::canciones
+    path: /cancion/{id}
+    controller: App\Controller\CancionController::cancion
     methods: GET
 
 canciones_playlist:
@@ -107,7 +107,7 @@ canciones_playlist:
 
 cancion_playlist:
     path: /playlist/{playlistId}/cancion/{cancionId}
-    controller: App\Controller\CancionController::cancionesPlaylist
+    controller: App\Controller\CancionController::cancionPlaylist
     methods: POST|DELETE
 
 # ARTISTAS
