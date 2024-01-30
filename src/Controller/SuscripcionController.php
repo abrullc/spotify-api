@@ -4,6 +4,7 @@ namespace App\Controller;
 
 # Fichero de Adrián
 
+use App\Entity\Pago;
 use App\Entity\Suscripcion;
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,12 +59,17 @@ class SuscripcionController extends AbstractController
             ->getRepository(Suscripcion::class)
             ->findOneBy(["id" => $suscripcionId]);
 
+        $pago = $this->getDoctrine()
+            ->getRepository(Pago::class)
+            ->findOneBy(["suscripcion" => $suscripcion]);
+
         if ($usuario->getId() == $suscripcion->getPremiumUsuario()->getUsuario()->getId()) {
             $respuesta = $serializer->serialize(
                 $suscripcion,
                 "json",
-                ["groups" => ["suscripcion"]]
+                ["groups" => ["suscripcionUsuario"]]
             );
+
             return new Response($respuesta);
         }
 

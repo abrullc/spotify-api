@@ -20,7 +20,7 @@ class Suscripcion
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * 
-     * @Groups("suscripcion")
+     * @Groups("suscripcion", "suscripcionUsuario")
      */
     private $id;
 
@@ -29,7 +29,7 @@ class Suscripcion
      *
      * @ORM\Column(name="fecha_inicio", type="date", nullable=false)
      * 
-     * @Groups("suscripcion")
+     * @Groups("suscripcion", "suscripcionUsuario")
      */
     private $fechaInicio;
 
@@ -38,7 +38,7 @@ class Suscripcion
      *
      * @ORM\Column(name="fecha_fin", type="date", nullable=false)
      * 
-     * @Groups("suscripcion")
+     * @Groups("suscripcion", "suscripcionUsuario")
      */
     private $fechaFin;
 

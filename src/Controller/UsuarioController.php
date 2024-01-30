@@ -4,6 +4,7 @@ namespace App\Controller;
 
 # Fichero de Adrián
 
+use App\Entity\Configuracion;
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,12 +20,22 @@ class UsuarioController extends AbstractController
             $usuarios = $this->getDoctrine()
                 ->getRepository(Usuario::class)
                 ->findAll();
+            
+            $configuracionesUsuario = $this->getDoctrine()
+                ->getRepository(Configuracion::class)
+                ->findAll();
 
             $usuarios = $serializer->serialize(
                 $usuarios,
-                    "json",
-                    ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
-                );
+                "json",
+                ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
+            );
+            
+            $configuracionesUsuario = $serializer->serialize(
+                $configuracionesUsuario,
+                "json",
+                ["groups" => ["configuracion", "calidad", "idioma"]]
+            );
 
             return new Response($usuarios);
         }
