@@ -45,6 +45,14 @@ class Free
      */
     private $usuario;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fechaRevision = new \DateTime();
+    }
+
 
 
     /**

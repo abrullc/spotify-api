@@ -5,6 +5,7 @@ namespace App\Controller;
 # Fichero de Adrián
 
 use App\Entity\Configuracion;
+use App\Entity\Free;
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,21 +21,11 @@ class UsuarioController extends AbstractController
             $usuarios = $this->getDoctrine()
                 ->getRepository(Usuario::class)
                 ->findAll();
-            
-            $configuracionesUsuario = $this->getDoctrine()
-                ->getRepository(Configuracion::class)
-                ->findAll();
 
             $usuarios = $serializer->serialize(
                 $usuarios,
                 "json",
                 ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
-            );
-            
-            $configuracionesUsuario = $serializer->serialize(
-                $configuracionesUsuario,
-                "json",
-                ["groups" => ["configuracion", "calidad", "idioma"]]
             );
 
             return new Response($usuarios);
@@ -47,14 +38,31 @@ class UsuarioController extends AbstractController
                 Usuario::class,
                 "json"
             );
-            
+
+            $usuarioFree = new Free();
+            $usuarioFree->setTiempoPublicidad(0);
+            $usuarioFree->setUsuario($usuario);
+
+            $configuracionesUsuario = new Configuracion();
+            $configuracionesUsuario->setAutoplay(false);
+            $configuracionesUsuario->setAjuste(false);
+            $configuracionesUsuario->setNormalizacion(false);
+            $configuracionesUsuario->setUsuario($usuario);
+
             $this->getDoctrine()->getManager()->persist($usuario);
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->getDoctrine()->getManager()->persist($usuarioFree);
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->getDoctrine()->getManager()->persist($configuracionesUsuario);
             $this->getDoctrine()->getManager()->flush();
 
             $usuario = $serializer->serialize(
                 $usuario, 
                 "json", 
-                ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]);
+                ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
+            );
             
             return new Response($usuario);
         }
