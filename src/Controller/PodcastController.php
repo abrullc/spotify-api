@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 # Fichero de Adrián
-# Fichero completo
 
 use App\Entity\Podcast;
 use App\Entity\Usuario;

@@ -18,7 +18,7 @@ class AnyadeCancionPlaylist
      *
      * @ORM\Column(name="fecha_anyadida", type="datetime", nullable=false)
      * 
-     * @Groups("anyadeCancionPlaylist")
+     * @Groups("anyadeCancionPlaylist", "usuarioAnyadeCancionPlaylist")
      */
     private $fechaAnyadida;
 
@@ -32,7 +32,7 @@ class AnyadeCancionPlaylist
      *   @ORM\JoinColumn(name="playlist_id", referencedColumnName="id")
      * })
      * 
-     * @Groups("anyadeCancionPlaylist")
+     * @Groups("anyadeCancionPlaylist", "usuarioAnyadeCancionPlaylist")
      */
     private $playlist;
 
@@ -46,7 +46,7 @@ class AnyadeCancionPlaylist
      *   @ORM\JoinColumn(name="cancion_id", referencedColumnName="id")
      * })
      * 
-     * @Groups("anyadeCancionPlaylist")
+     * @Groups("anyadeCancionPlaylist", "usuarioAnyadeCancionPlaylist")
      */
     private $cancion;
 
@@ -63,6 +63,14 @@ class AnyadeCancionPlaylist
      * @Groups("anyadeCancionPlaylist")
      */
     private $usuario;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fechaAnyadida = new \DateTime();
+    }
 
 
 
