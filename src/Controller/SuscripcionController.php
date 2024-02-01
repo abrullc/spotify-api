@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 # Fichero de Adrián
+# Fichero completo
 
 use App\Entity\Pago;
+use App\Entity\Paypal;
 use App\Entity\Suscripcion;
+use App\Entity\TarjetaCredito;
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -62,6 +65,15 @@ class SuscripcionController extends AbstractController
         $pago = $this->getDoctrine()
             ->getRepository(Pago::class)
             ->findOneBy(["suscripcion" => $suscripcion]);
+
+        // Problemas de conversión de datos debido a que Doctrine no admite tipo YEAR
+        /*$tarjetaCredito = $this->getDoctrine()
+            ->getRepository(TarjetaCredito::class)
+            ->findOneBy(["formaPago" => $pago->getFormaPago()]);
+        
+        $paypal = $this->getDoctrine()
+            ->getRepository(Paypal::class)
+            ->findOneBy(["formaPago" => $pago->getFormaPago()]);*/
 
         if ($usuario->getId() == $suscripcion->getPremiumUsuario()->getUsuario()->getId()) {
             $respuesta = $serializer->serialize(

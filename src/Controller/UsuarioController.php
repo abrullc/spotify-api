@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 # Fichero de Adrián
+# Fichero completo
 
 use App\Entity\Configuracion;
 use App\Entity\Free;
