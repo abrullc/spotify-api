@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 # Fichero de Adrián
+# Fichero completo
 
 use App\Entity\Podcast;
 use App\Entity\Usuario;
@@ -22,10 +23,10 @@ class PodcastController extends AbstractController
                 ->findAll();
 
             $podcasts = $serializer->serialize(
-                    $podcasts,
-                    "json",
-                    ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast", "cancion", "album", "artista", "playlist"]]
-                );
+                $podcasts,
+                "json",
+                ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast"]]
+            );
 
             return new Response($podcasts);
         }
@@ -43,10 +44,10 @@ class PodcastController extends AbstractController
                 ->findOneBy(["id" => $id]);
 
             $podcast = $serializer->serialize(
-                    $podcast,
-                    "json",
-                    ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast", "cancion", "album", "artista", "playlist"]]
-                );
+                $podcast,
+                "json",
+                ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast"]]
+            );
 
             return new Response($podcast);
         }
@@ -63,30 +64,20 @@ class PodcastController extends AbstractController
                 ->getRepository(Usuario::class)
                 ->findOneBy(["id" => $id]);
 
-            $podcasts = $this->getDoctrine()
-                ->getRepository(Podcast::class)
-                ->findAll();
-            
-            $podcastsUsuario = [];
-            foreach ($podcasts as $podcast)
+            if (!empty($usuario))
             {
-                $usuariosPodcast = $podcast->getUsuario();
-                foreach ($usuariosPodcast as $usuarioPodcast)
-                {
-                    if ($usuarioPodcast == $usuario)
-                    {
-                        $podcastsUsuario[] = $podcast;
-                    }
-                }
-            }
+                $podcastsUsuario = $usuario->getPodcast();
 
-            $podcastsUsuario = $serializer->serialize(
+                $podcastsUsuario = $serializer->serialize(
                     $podcastsUsuario,
                     "json",
                     ["groups" => ["podcast"]]
                 );
 
-            return new Response($podcastsUsuario);
+                return new Response($podcastsUsuario);
+            }
+
+            return new JsonResponse(["msg" => "Usuario no encontrado"], 404);
         }
 
         return new JsonResponse(["msg" => $request->getMethod() . " no permitido"]);
@@ -97,44 +88,82 @@ class PodcastController extends AbstractController
         $idUsuario = $request->get("idUsuario");
         $idPodcast = $request->get("idPodcast");
 
-        if ($request->isMethod("POST")) {
-            $usuario = $this->getDoctrine()
-                ->getRepository(Usuario::class)
-                ->findOneBy(["id" => $idUsuario]);
+        $usuario = $this->getDoctrine()
+            ->getRepository(Usuario::class)
+            ->findOneBy(["id" => $idUsuario]);
 
-            $podcast = $this->getDoctrine()
-                ->getRepository(Podcast::class)
-                ->findOneBy(["id" => $idPodcast]);
+        $podcast = $this->getDoctrine()
+            ->getRepository(Podcast::class)
+            ->findOneBy(["id" => $idPodcast]);
+
+        if ($request->isMethod("POST")) {
 
             if (!empty($usuario))
             {
                 if (!empty($podcast))
                 {
-                    $usuariosPodcast = $podcast->getUsuario();
+                    $podcastsUsuario = $usuario->getPodcast();
                     
-                    foreach ($usuariosPodcast as $usuarioPodcast)
+                    foreach ($podcastsUsuario as $podcastUsuario)
                     {
-                        if ($usuarioPodcast == $usuario)
+                        if ($podcastUsuario == $podcast)
                         {
                             return new JsonResponse(["msg" => "El usuario especificado ya esta siguiendo el podcast especificado"]);
                         }
                     }
 
-                    $usuariosPodcast[] = $usuario;
-                    $podcast->setUsuario($usuariosPodcast);
+                    $podcastsUsuario[] = $podcast;
+                    $usuario->setPodcast($podcastsUsuario);
                     
-                    $this->getDoctrine()->getManager()->persist($podcast);
+                    $this->getDoctrine()->getManager()->persist($usuario);
                     $this->getDoctrine()->getManager()->flush();
     
-                    $podcast = $serializer->serialize(
-                        $podcast,
+                    $podcastsUsuario = $serializer->serialize(
+                        $podcastsUsuario,
                         "json",
-                        ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast", "cancion", "album", "artista", "playlist"]]
+                        ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast"]]
                     );
     
-                return new Response($podcast);
+                    return new Response($podcastsUsuario);
                 }
                 
+                return new JsonResponse(["msg" => "Podcast no encontrado"], 404);
+            }
+
+            return new JsonResponse(["msg" => "Usuario no encontrado"], 404);
+        }
+
+        if ($request->isMethod("DELETE")) {
+            if (!empty($usuario))
+            {
+                if (!empty($podcast))
+                {
+                    $podcastsUsuario = $usuario->getPodcast();
+                    
+                    foreach ($podcastsUsuario as $i=>$podcastUsuario)
+                    {
+                        if ($podcastUsuario == $podcast)
+                        {
+                            unset($podcastsUsuario[$i]);
+                            
+                            $usuario->setPodcast($podcastsUsuario);
+                    
+                            $this->getDoctrine()->getManager()->persist($usuario);
+                            $this->getDoctrine()->getManager()->flush();
+            
+                            $podcastsUsuario = $serializer->serialize(
+                                $podcastsUsuario,
+                                "json",
+                                ["groups" => ["podcast", "usuariosPodcast", "usuarioPodcast"]]
+                            );
+            
+                            return new Response($podcastsUsuario);
+                        }
+                    }
+
+                    return new JsonResponse(["msg" => "El usuario especificado no está siguiendo el podcast especificado"]);
+                }
+
                 return new JsonResponse(["msg" => "Podcast no encontrado"], 404);
             }
 

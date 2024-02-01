@@ -38,7 +38,7 @@ class Usuario
      *
      * @ORM\Column(name="password", type="string", length=150, nullable=false)
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $password;
 
@@ -47,7 +47,7 @@ class Usuario
      *
      * @ORM\Column(name="email", type="string", length=150, nullable=false)
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $email;
 
@@ -56,7 +56,7 @@ class Usuario
      *
      * @ORM\Column(name="genero", type="string", length=1, nullable=true)
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $genero;
 
@@ -65,7 +65,7 @@ class Usuario
      *
      * @ORM\Column(name="fecha_nacimiento", type="date", nullable=false)
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $fechaNacimiento;
 
@@ -74,7 +74,7 @@ class Usuario
      *
      * @ORM\Column(name="pais", type="string", length=45, nullable=true)
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $pais;
 
@@ -83,7 +83,7 @@ class Usuario
      *
      * @ORM\Column(name="codigo_postal", type="string", length=20, nullable=true)
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $codigoPostal;
 
@@ -100,7 +100,7 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $cancion = array();
 
@@ -134,7 +134,7 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $album = array();
 
@@ -151,7 +151,7 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $artista = array();
 
@@ -168,7 +168,7 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario", "usuarioPodcast")
+     * @Groups("usuario")
      */
     private $playlist = array();
 

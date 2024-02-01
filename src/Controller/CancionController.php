@@ -77,7 +77,7 @@ class CancionController extends AbstractController
                 {
                     $cancionPlaylist = $this->getDoctrine()
                         ->getRepository(Cancion::class)
-                        ->findBy(["id" => $cancionAynadidaPlaylist->getCancion()->getId()]);
+                        ->findOneBy(["id" => $cancionAynadidaPlaylist->getCancion()->getId()]);
                     
                     $cancionesPlaylist[] = $cancionPlaylist;
                 }
@@ -163,6 +163,7 @@ class CancionController extends AbstractController
                     if (!empty($cancionAnyadidaPlaylist))
                     {
                         $deletedCancionAnyadidaPlaylist = clone $cancionAnyadidaPlaylist;
+                        
                         $this->getDoctrine()->getManager()->remove($cancionAnyadidaPlaylist);
                         $this->getDoctrine()->getManager()->flush();
                         
