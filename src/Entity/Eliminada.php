@@ -36,6 +36,14 @@ class Eliminada
      */
     private $playlist;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fechaEliminacion = new \DateTime();
+    }
+
 
 
     /**

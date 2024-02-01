@@ -76,6 +76,7 @@ class Playlist
     public function __construct()
     {
         $this->usuarioSeguidor = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fechaCreacion = new \DateTime();
     }
 
 
