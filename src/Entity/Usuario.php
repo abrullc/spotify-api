@@ -100,7 +100,6 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario")
      */
     private $cancion = array();
 
@@ -117,7 +116,6 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario")
      */
     private $podcast = array();
 
@@ -134,7 +132,6 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario")
      */
     private $album = array();
 
@@ -151,7 +148,6 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario")
      */
     private $artista = array();
 
@@ -168,7 +164,6 @@ class Usuario
      *   }
      * )
      * 
-     * @Groups("usuario")
      */
     private $playlist = array();
 
