@@ -38,7 +38,7 @@ class SuscripcionController extends AbstractController
                 $suscripciones = $serializer->serialize(
                     $suscripciones,
                     "json",
-                    ["groups" => ["suscripcion", "premium", "usuario", "podcast", "album", "artista", "playlist", "cancion"]]
+                    ["groups" => ["suscripcion"]]
                 );
                 return new Response($suscripciones);
             }
