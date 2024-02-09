@@ -26,7 +26,7 @@ class UsuarioController extends AbstractController
             $usuarios = $serializer->serialize(
                 $usuarios,
                 "json",
-                ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
+                ["groups" => ["usuario"]]
             );
 
             return new Response($usuarios);
@@ -62,7 +62,7 @@ class UsuarioController extends AbstractController
             $usuario = $serializer->serialize(
                 $usuario, 
                 "json", 
-                ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
+                ["groups" => ["usuario"]]
             );
             
             return new Response($usuario);
@@ -84,7 +84,7 @@ class UsuarioController extends AbstractController
             $usuario = $serializer->serialize(
                     $usuario,
                     "json",
-                    ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
+                    ["groups" => ["usuario"]]
                 );
 
             return new Response($usuario);
@@ -106,7 +106,7 @@ class UsuarioController extends AbstractController
                 $usuario = $serializer->serialize(
                     $usuario,
                     "json",
-                    ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
+                    ["groups" => ["usuario"]]
                 );
 
             return new Response($usuario);
@@ -123,7 +123,7 @@ class UsuarioController extends AbstractController
             $deletedUsuario = $serializer->serialize(
                 $deletedUsuario, 
                 "json", 
-                ["groups" => ["usuario", "cancion", "podcast", "album", "artista", "playlist"]]
+                ["groups" => ["usuario"]]
             );
 
             return new Response($deletedUsuario);
