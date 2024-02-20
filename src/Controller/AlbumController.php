@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Album;
 use App\Entity\Cancion;
+use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,9 +25,9 @@ class AlbumController extends AbstractController
 
             $albums = $serializer->serialize(
                 $albums,
-                    "json",
-                    ["groups" => ["album", "artista"]]
-                );
+                "json",
+                ["groups" => ["album", "artista"]]
+            );
 
             return new Response($albums);
         }
@@ -80,6 +81,34 @@ class AlbumController extends AbstractController
             }
 
             return new JsonResponse(["msg" => "Album no encontrado"], 404);
+        }
+
+        return new JsonResponse(["msg" => $request->getMethod() . " no permitido"]);
+    }
+
+    public function albumsUsuario(SerializerInterface $serializer, Request $request)
+    {
+        if ($request->isMethod("GET")) {
+            $id = $request->get("id");
+
+            $usuario = $this->getDoctrine()
+                ->getRepository(Usuario::class)
+                ->findOneBy(["id" => $id]);
+
+                if (!empty($usuario))
+                {
+                    $albumsUsuario = $usuario->getAlbum();
+    
+                    $albumsUsuario = $serializer->serialize(
+                        $albumsUsuario,
+                        "json",
+                        ["groups" => ["album", "artista"]]
+                    );
+                    
+                    return new Response($albumsUsuario);
+                }
+                
+                return new JsonResponse(["msg" => "Usuario no encontrado"], 404);
         }
 
         return new JsonResponse(["msg" => $request->getMethod() . " no permitido"]);
